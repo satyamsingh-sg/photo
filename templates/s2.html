@@ -1,0 +1,242 @@
+
+  <!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Profile</title>
+
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+  .boxs{
+    width:100%;
+    height: 100%;
+    position:relative;
+    top:50px;
+
+
+}
+
+
+
+.boxs div {
+       width:300px;
+       height: 350px;
+       position:relative;
+       top:0px;
+       box-shadow: 10px 10px 5px grey;
+       float:left;
+       margin-left :140px;
+       margin-bottom:40px;
+
+
+
+}
+.boxs div p{
+       width:300px;
+       height: 350px;
+       align-items: center;
+
+
+}
+.nov{
+  height:80px;
+  wight:100%;
+  background-color:pink;
+  padding:10px;
+}
+.nov h3{
+  margin-top:8px;
+  color:black;
+}
+.btn{
+  position:relative;
+  margin-left:30%;
+  top:20px;
+
+
+}
+ul{
+  list-style-type: none;
+}
+li{
+  display: inline;
+  margin:20px;
+}
+
+.box{
+     
+      float: left;
+      border-radius: 15px;
+      
+    }
+
+.box address{
+        display: inline-block;
+        margin-left: 50px;
+        margin: 30px;
+      }
+      .box img{
+        margin: 5px;
+        border-radius: 10px;
+        float: left;
+       
+      }
+      .box:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .comment:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      body {
+    background: #eee
+}
+
+.date {
+    font-size: 11px
+}
+
+.comment-text {
+    font-size: 12px
+}
+
+.fs-12 {
+    font-size: 12px
+}
+
+.shadow-none {
+    box-shadow:  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.name {
+    color: #007bff
+}
+
+.cursor:hover {
+    color: blue
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.textarea {
+    resize: none
+}
+
+ </style>
+</head>
+
+<body>
+
+
+
+
+<div class="nov">  <center><h3> All india historial places </h3></center> </div>
+      <div class="btn">
+      <ul>
+     <li> <a href="{% url "image_upload" %}"><button>Add Image</button></a></li>
+     {% if request.user.is_authenticated %}
+     <li> <a href="{% url "comt" %}"><button>Comment</button></a></li>
+     <li> <a href="{% url "logout" %}"><button>Logout</button></a></li>
+      {% else %}
+     <li> <a href="{% url "signup" %}"><button>signIn</button></a></li>
+     <li> <a href="{% url "login" %}"><button>Login</button></a></li>
+      {%  endif  %}
+         </ul> 
+      </div>
+    </div>
+
+    
+      
+    <div class="container mt-5 clearfix">
+        <div class="row">
+ 
+          
+              
+              <div class="col-md-8 ">
+          
+                <div  class="row">
+
+                    {% for hotel in hotel_images %} 
+                        <div class="col-md-12  mb-3 box">
+                          <img src="{{ hotel.Photo.url }}" alt="logo" height="150px" weight="150px"/>
+                                  <address> 
+                                    <h4 style="color:rgb(4, 1, 31);font-weight: bold;font-family: "Times New Roman", Times, serif; ">{{hotel.description }}</h4>
+                                      <h5 style="color:rgb(4, 1, 31);font-weight: bold;font-family: "Times New Roman", Times, serif; ">Bangalore</h5>
+                                    <h6 style="color:rgb(4, 1, 31);font-weight: bold;font-family: "Times New Roman", Times, serif; ">60 KM</h6>
+                                  </address>
+                    
+                        </div>
+                      
+                      {% endfor %} 
+                </div>
+              </div>
+
+        
+
+
+
+    <div class="col-md-4 bg-white ">
+                <center><h3 class="m-3">Comment</h3></center>
+                <div  class="row">
+
+                    {% for hotel in stp %} 
+                        <div class="col-md-12  mb-3 box">
+                         
+                                  <address> 
+                                    <h6 >{{hotel.cmt }}</h6>
+                                     
+                                  </address>
+                    
+                        </div>
+                      
+                      {% endfor %} 
+                </div>
+              </div>
+    
+    
+
+      
+                    
+               
+            
+    
+    </div>
+      </div>
+      
+    
+
+       
+
+</body>
+
+</html>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+                        

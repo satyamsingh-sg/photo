@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Hotel_image</title> 
+
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+    .nov{
+  height:80px;
+  wight:100%;
+  background-color:pink;
+  padding:10px;
+  margin-bottom:20px;
+}
+.nov h3{
+  margin-top:0px;
+  color:black;
+}
+    </style>
+</head> 
+<body> 
+<div class="nov">  <center><h3> All india historial places </h3></center> </div>
+{% if messages %}
+       {% for message in messages %}
+           <p {% if message.tag %} class="alert alert-success"{% endif %}> {{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form method = "POST" enctype="multipart/form-data"> 
+        {% csrf_token %} 
+      
+      {{fm}}
+        <input type="submit" value="Submit" class="btn btn-primary">
+     {% if form.non_field_errors %}
+         {% for error in form.non_field_errors %}
+             <p class="alert alert-denger my-3">{{ error }}</p>
+         {% endfor %}
+     {% endif %}
+     </form>
+       
+  <a href="{% url "hotel_images" %}">show image</a>
+</body> 
+</html> 
